@@ -73,4 +73,4 @@ app.use('/dashboard', dashboardRouter);
 app.get('/', (req, res) => {
     res.render('index', { title: 'TRANG CHỦ' });
 });
-app.listen(3000, () => { console.log('Server is running at http://127.0.0.1:3000') });
+app.listen(3000, () => { console.log('Server is running at https://dientoandammay-quanlynhansu.onrender.com') });
