@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <title>
+        <%= title %> - Trang quản lý nhân sự
+    </title>
+</head>
+
+<body>
+    <div class="container pb-5">
+        <%- include('../GiaoDien/navbar') %>
+        <!-- Nội dung chính -->
+            <div class="card mt-3 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0 text-primary"><i class="bi bi-person-bounding-box me-2"></i>
+                        <%= title %>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <!-- Viết card ở đây -->
+                    <div class="row">
+                        <div class="col-md-4 text-center border-end">
+                            <div class="d-inline-block p-2 border shadow-sm mb-3"
+                                style="border-radius: 10px; background: #f8f9fa;">
+                                <% if(nhanvien.AnhDaiDien) { %>
+                                    <img src="/images/<%= nhanvien.AnhDaiDien %>" class="img-fluid"
+                                        style="width: 200px; height: 250px; object-fit: cover; border-radius: 5px;"
+                                        alt="Avatar">
+                                    <% } else { %>
+                                        <div class="d-flex align-items-center justify-content-center bg-secondary text-white"
+                                            style="width: 200px; height: 250px; border-radius: 5px;">
+                                            <i class="bi bi-person-fill" style="font-size: 5rem;"></i>
+                                        </div>
+                                        <% } %>
+                            </div>
+                            <h4 class="fw-bold text-uppercase mt-2">
+                                <%= nhanvien.HoTen %>
+                            </h4>
+                            <p class="badge bg-info text-dark">Mã NV: <%= nhanvien.MaNhanVien %>
+                            </p>
+                        </div>
+
+                        <div class="col-md-8 ps-md-5">
+                            <h5 class="text-muted border-bottom pb-2 mb-4">Thông tin chi tiết</h5>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-4 fw-bold">Khoa / Phòng ban:</div>
+                                <div class="col-sm-8 text-secondary">
+                                    <%= nhanvien.PhongBanId ? nhanvien.PhongBanId.TenPhongBan : 'Chưa cập nhật' %>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-4 fw-bold">Chức vụ:</div>
+                                <div class="col-sm-8 text-secondary">
+                                    <%= nhanvien.ChucVuId ? nhanvien.ChucVuId.TenChucVu : 'Chưa cập nhật' %>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-4 fw-bold">Số điện thoại:</div>
+                                <div class="col-sm-8 text-secondary">
+                                    <%= nhanvien.SoDienThoai %>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-4 fw-bold">Giới tính:</div>
+                                <div class="col-sm-8 text-secondary">
+                                    <%= nhanvien.GioiTinh %>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-4 fw-bold">Ngày sinh:</div>
+                                <div class="col-sm-8 text-secondary">
+                                    <%= nhanvien.NgaySinh ? new Date(nhanvien.NgaySinh).toLocaleDateString('vi-VN') : 'Chưa cập nhật' %>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-4 fw-bold">Hệ số lương:</div>
+                                <div class="col-sm-8 text-secondary">
+                                    <%= nhanvien.HeSoLuong ? nhanvien.HeSoLuong : 1 %>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-4 fw-bold">Trạng thái:</div>
+                                <div class="col-sm-8">
+                                    <span
+                                        class="badge <%= nhanvien.TrangThai == 'Đang làm việc' ? 'bg-success' : 'bg-danger' %>">
+                                        <%= nhanvien.TrangThai %>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <a href="/nhanvien/doimatkhau" class="btn btn-warning">
+                                    <i class="fas fa-key"></i> Đổi mật khẩu
+                                </a>
+                            </div>
+                            <div class="mt-4 border-top pt-3">
+                                <a href="/" class="btn btn-outline-primary btn-sm">Quay lại Trang chủ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- Footer -->
+            <%- include('../GiaoDien/footer') %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Script-->
+    <%- include('../GiaoDien/javascript') %>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <title>
+        <%= title %> - Trang quản lý nhân sự
+    </title>
+</head>
+<body>
+    <div class="container">
+        <%- include('../GiaoDien/navbar') %>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card mt-4 shadow-sm">
+                    <div class="card-header bg-success text-white fw-bold">
+                        <i class="bi bi-fingerprint"></i> <%= title %>
+                    </div>
+                    <div class="card-body p-4">
+                        <% if(locals.info) { %>
+                            <div class="alert alert-info border-0 shadow-sm mb-4">
+                                <i class="bi bi-info-circle-fill me-2"></i> <%= info %>
+                            </div>
+                        <% } %>
+                        <form action="/chamcong/them" method="post" class="text-center">
+                            <% if(session.user.QuyenHan === 'admin') { %>
+                                <div class="mb-4 text-start">
+                                    <label class="form-label fw-bold">Chọn nhân viên <span class="text-danger">(*)</span></label>
+                                    <select name="NhanVienId" class="form-select form-select-lg" required>
+                                        <option value="">-- Chọn nhân viên --</option>
+                                        <% nhanvien.forEach(nv => { %>
+                                            <option value="<%= nv._id %>">
+                                                <%= nv.MaNhanVien %> - <%= nv.HoTen %>
+                                            </option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            <% } else { %>
+                                <input type="hidden" name="NhanVienId" value="<%= session.user._id %>">
+                                <div class="mb-4">
+                                    <h5 class="text-secondary">Xin chào, <strong><%= session.user.HoTen %></strong></h5>
+                                    <p class="text-muted">Nhấn nút bên dưới để ghi nhận công hôm nay.</p>
+                                </div>
+                            <% } %>
+                            <div class="mb-4">
+                                <h3 class="fw-bold text-primary"><%= new Date().toLocaleDateString('vi-VN') %></h3>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-success btn-lg py-3 fw-bold">
+                                    XÁC NHẬN CHẤM CÔNG
+                                </button>                             
+                                <a href="/" class="btn btn-outline-secondary">
+                                    Trở về trang chủ
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../GiaoDien/footer') %>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

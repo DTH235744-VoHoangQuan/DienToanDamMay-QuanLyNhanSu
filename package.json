@@ -1,0 +1,21 @@
+{
+  "name": "quanlynhansu",
+  "version": "1.0.0",
+  "description": "Quản lý nhân sự NodeJS + MongoDB Atlas",
+  "license": "ISC",
+  "author": "Võ Hoàng Quân && Lê Đăng Khoa",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "mongoose": "^9.4.1",
+    "multer": "^2.1.1",
+    "nodemon": "^3.1.14"
+  }
+}
