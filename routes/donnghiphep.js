@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
         }
         return true;
     });
-    res.render('DonnghiPhep/donnghiphep', {
+    res.render('DonNghiPhep/donnghiphep', {
         title: 'Danh sách đơn nghỉ phép',
         donnghiphep: duLieuLoc,
         phongban: pb,
