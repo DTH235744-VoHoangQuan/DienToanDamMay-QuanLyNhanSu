@@ -38,6 +38,7 @@
                                 <label for="HoTen" class="form-label">Họ tên <span class="text-danger">(*)</span></label>
                                 <input type="text" class="form-control" id="HoTen" name="HoTen"
                                     value="<%= nhanvien.HoTen %>" required />
+                                <div class="invalid-feedback">Vui lòng nhập họ tên.</div>
                             </div>
                         </div>
                     </div>
@@ -56,6 +57,7 @@
                                 <label for="SoDienThoai" class="form-label">Số điện thoại <span class="text-danger">(*)</span></label>
                                 <input type="tel" class="form-control" id="SoDienThoai" name="SoDienThoai"
                                     value="<%= nhanvien.SoDienThoai %>" pattern="0[0-9]{9}" required />
+                                <div class="invalid-feedback">Số điện thoại bị trùng hoặc không đúng 10 số.</div>
                             </div>
                         </div>
                     </div>
@@ -66,8 +68,8 @@
                             <div class="mb-3">
                                 <label for="NgaySinh" class="form-label">Ngày sinh <span class="text-danger">(*)</span></label>
                                 <% var d=new Date(nhanvien.NgaySinh); var ngaySinh=d.toISOString().split('T')[0]; %>
-                                    <input type="date" name="NgaySinh" class="form-control" value="<%= ngaySinh %>"
-                                        required>
+                                    <input type="date" name="NgaySinh" class="form-control" value="<%= ngaySinh %>"required>
+                                    <div class="invalid-feedback">Vui lòng chọn ngày sinh.</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -103,6 +105,7 @@
                                         </option>
                                     <% }); %>
                                 </select>
+                                <div class="invalid-feedback">Vui lòng chọn phòng ban.</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -117,6 +120,7 @@
                                         </option>
                                     <% }); %>
                                 </select>
+                                <div class="invalid-feedback">Vui lòng chọn chức vụ.</div>
                             </div>
                         </div>
                     </div>
