@@ -107,7 +107,7 @@
                                         <%= dnp.NguoiDuyetId ? dnp.NguoiDuyetId.HoTen : "Chờ duyệt" %>
                                     </td>
 
-                                    <% if (user && user.QuyenHan !== 'nhanvien') { %>
+                                    <% if (user && user.QuyenHan === 'admin') { %>
                                         <td class="align-middle text-center">
                                             <div class="d-flex gap-1 justify-content-center">
                                                 <% if(dnp.TrangThai == 'Chờ duyệt') { %>
