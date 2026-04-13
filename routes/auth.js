@@ -30,7 +30,7 @@ router.post('/dangnhap', async (req, res) => {
             // So sánh mật khẩu với chuỗi mã hóa
             if (bcrypt.compareSync(matkhau, nhanvien.MatKhau)) {
                 
-                // Kiểm tra trạng thái làm việc (tương đương KichHoat == 0 trong hình)
+                // Kiểm tra trạng thái làm việc
                 if (nhanvien.TrangThai == 'Đã nghỉ việc') {
                     req.session.error = 'Tài khoản bị khóa do nhân viên đã nghỉ việc.';
                     res.redirect('/error');

@@ -76,7 +76,7 @@
                                 <th>Ngày gửi</th>
                                 <th>Người duyệt</th>
                                 <!-- Nếu không phải nhân viên thì hiện -->
-                                <% if (user && user.QuyenHan !== 'nhanvien') { %>
+                                <% if (user && user.QuyenHan === 'admin') { %>
                                     <th width="5%">Duyệt</th>
                                 <% } %>
                                 <th width="5%">Xóa</th>
