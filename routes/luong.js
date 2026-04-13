@@ -4,6 +4,15 @@ var Luong = require('../models/luong');
 var NhanVien = require('../models/nhanvien');
 var ChamCong = require('../models/chamcong');
 var ThuongPhat = require('../models/thuongphat');
+
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
+
 // GET: Danh sách lương (Lọc bảng lương theo tháng năm)
 router.get('/', async (req, res) => {
     var thang = req.query.thang || new Date().getMonth() + 1;

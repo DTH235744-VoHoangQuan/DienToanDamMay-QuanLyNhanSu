@@ -5,6 +5,14 @@ var NhanVien = require('../models/nhanvien');
 var PhongBan = require('../models/phongban');
 var ChamCong = require('../models/chamcong');
 
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
+
 // GET: Danh sách đơn nghỉ phép
 router.get('/', async (req, res) => {
     // Nếu chưa đăng nhập thì chuyển về trang đăng nhập

@@ -1,10 +1,4 @@
 var http = require('http');
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.write('<h3>Node.js</h3>');
-    res.write('<p>Quản Lý Nhân Sự</p>');
-    res.end();
-}).listen(8080);
 
 var express = require('express');
 var app = express();

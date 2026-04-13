@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 var ChucVu = require('../models/chucvu');
 var NhanVien = require('../models/nhanvien');
+
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
+
 // GET: Danh sách chức vụ
 router.get('/', async (req, res) => {
     var cv = await ChucVu.find();

@@ -5,6 +5,14 @@ var NhanVien = require('../models/nhanvien');
 var PhongBan = require('../models/phongban');
 var Luong = require('../models/luong');
 
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
+
 // GET DASHBOARD
 router.get('/', async (req, res) => {
 

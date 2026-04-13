@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 var PhongBan = require('../models/phongban');
 var NhanVien = require('../models/nhanvien');
+
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
+
 // GET: Danh sách phòng ban
 router.get('/', async (req, res) => {
     var pb = await PhongBan.find().populate('TruongPhongId').sort({ TenPhongBan: 1 }).exec();   

@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 var ThuongPhat = require('../models/thuongphat');
 var NhanVien = require('../models/nhanvien');
+
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
+
 // GET: Danh sách thưởng phạt
 router.get('/', async (req, res) => {
     var tp = await ThuongPhat.find().populate('NhanVienId');

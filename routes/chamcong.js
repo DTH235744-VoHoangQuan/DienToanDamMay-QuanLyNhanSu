@@ -32,6 +32,14 @@ router.get('/getbyid/:id', async (req, res) => {
     }
 });
 
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
+
 // GET: Danh sách chấm công (Mặc định hiện ngày hôm nay)
 router.get('/', async (req, res) => {
     var locNgay = req.query.ngay;

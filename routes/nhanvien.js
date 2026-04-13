@@ -37,6 +37,13 @@ function TaoEmail(maNV, quyenHan) {
     // Kết hợp: manv@quyenhan -> dth235744@admin
     return `${manv}@${qh}`;
 }
+// Không cho vào nếu chưa đăng nhập
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/dangnhap');
+    }
+    next();
+});
 
 // GET: Danh sách nhân viên đang làm việc
 router.get('/', async (req, res) => {
