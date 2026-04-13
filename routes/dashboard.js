@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
     }
     tongLuongThang = Number(tongLuongThang);
     tongLuongNam = Number(tongLuongNam);
-    res.render('Dashboard/dashboard', {
+    res.render('DashBoard/dashboard', {
         title: 'Thống kê tổng quan',
         tongNhanVien: tongNhanVien,
         tongPhongBan: tongPhongBan,
